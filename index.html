@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G-Tech+ | Gazi Teknopark Yaratıcı Teknolojiler Programı</title>
+<meta name="description" content="Gazi Teknopark firmaları için 6 aylık uygulamalı eğitim ve danışmanlık programı: üretken yapay zekâ, AR/VR/XR, oyun teknolojileri, gerçek zamanlı 3D ve yeni medya.">
+<link rel="icon" href="gtech-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --navy:#0e2a5c; --blue:#1558b8; --cyan-text:#0a6f9e; --cyan-light:#7fd6f5;
+    --ink:#10213f; --muted:#3d4f6b; --muted2:#4a5b74;
+    --ground:#f3f7fb; --tint:#eef5fc; --white:#ffffff; --line:#d9e3ef; --field:#b9c7da;
+    --display:"Sora","Segoe UI",sans-serif; --body:"Source Sans 3","Segoe UI",sans-serif; --mono:"JetBrains Mono",Consolas,monospace;
+    --radius:14px; --wrap:1200px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:var(--ground);font-size:17px;line-height:1.55}
+  img{max-width:100%;height:auto;display:block}
+  a{color:var(--blue)} a:hover{color:var(--navy)}
+  :focus-visible{outline:3px solid var(--cyan-text);outline-offset:3px}
+  h1,h2,h3{font-family:var(--display);color:var(--navy);margin:0;text-wrap:balance}
+  p{margin:0}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding-inline:40px}
+  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan-text)}
+  .lead{font-size:18px;line-height:1.6;color:var(--muted)}
+  .section{padding-block:88px 32px}
+  .section-head{display:flex;flex-direction:column;gap:12px;max-width:760px;margin-bottom:36px}
+  .section-head h2{font-size:40px;line-height:1.15;font-weight:700}
+  .btn{display:inline-block;font-family:var(--body);font-weight:700;font-size:17px;padding:15px 26px;border-radius:8px;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1.2}
+  .btn-primary{background:var(--blue);color:var(--white)} .btn-primary:hover{background:var(--navy);color:var(--white)}
+  .btn-outline{background:var(--white);color:var(--navy);border-color:var(--navy)} .btn-outline:hover{background:var(--tint);color:var(--navy)}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius)}
+
+  /* Üst menü */
+  .site-header{position:sticky;top:0;z-index:20;background:var(--white);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:40px;padding-block:12px}
+  .nav .logo img{height:56px;width:auto}
+  .nav-links{display:flex;gap:28px;flex-grow:1;font-weight:600}
+  .nav-links a{color:var(--ink);text-decoration:none} .nav-links a:hover{color:var(--blue)}
+  .nav-cta{padding:12px 22px;font-size:16px}
+  .menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:8px;width:48px;height:48px;cursor:pointer;color:var(--navy)}
+
+  /* Açılış */
+  .hero{background:var(--white)}
+  .hero-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;align-items:center;padding-block:72px 80px}
+  .hero-copy{display:flex;flex-direction:column;gap:24px}
+  .hero h1{font-size:56px;line-height:1.08;letter-spacing:-.02em;font-weight:700}
+  .hero .lead{font-size:20px;max-width:540px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-visual{background:var(--tint);border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:24px}
+  .steps4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .steps4 div{background:var(--white);border-radius:10px;padding:14px 16px;font-size:15px;line-height:1.4}
+  .steps4 strong{display:block;font-family:var(--display);color:var(--navy)}
+
+  /* Özet şeridi */
+  .facts{background:var(--navy);color:var(--white)}
+  .facts .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;padding-block:36px}
+  .facts div{display:flex;flex-direction:column;gap:4px}
+  .facts b{font-family:var(--display);font-size:40px;font-weight:700;line-height:1.1}
+  .facts span{color:#c9d8ee;font-size:16px}
+
+  /* Program akışı */
+  .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  .flow li{padding:26px;display:flex;flex-direction:column;gap:10px}
+  .flow .top{display:flex;justify-content:space-between;align-items:center}
+  .flow .num{font-family:var(--display);font-weight:700;font-size:30px;color:var(--blue)}
+  .flow .when{font-family:var(--mono);font-size:13px;color:var(--muted2)}
+  .flow h3{font-size:21px;font-weight:600}
+  .flow p{font-size:16px;color:var(--muted)}
+
+  /* Modüller */
+  .modules-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:36px}
+  .modules-head .section-head{margin-bottom:0}
+  .modules-head p{max-width:380px;color:var(--muted)}
+  .modules{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+  .module{padding:22px;display:flex;flex-direction:column;gap:12px}
+  .module .tag{font-family:var(--mono);font-size:12px;color:var(--muted2)}
+  .module h3{font-size:19px;line-height:1.25;font-weight:600}
+  .module p{font-size:15px;line-height:1.5;color:var(--muted)}
+
+  /* Senaryolar */
+  .cases{overflow:hidden}
+  .case-row{display:grid;grid-template-columns:220px minmax(0,1fr) minmax(0,1.4fr);gap:24px;padding:20px 28px;border-top:1px solid var(--line);align-items:center}
+  .case-row.head{background:var(--tint);border-top:0;padding-block:16px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2)}
+  .case-row strong{font-family:var(--display);color:var(--navy)}
+  .case-row .now{color:var(--muted)}
+
+  /* Kimler / kazanımlar */
+  .who{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-bottom:96px}
+  .who-card{padding:36px;display:flex;flex-direction:column;gap:18px}
+  .who-card h2{font-size:30px;line-height:1.2}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips span{background:var(--tint);color:var(--navy);border-radius:999px;padding:6px 14px;font-size:15px;font-weight:600}
+  .who-card ul{margin:0;padding-left:20px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+  .gains{background:var(--navy);color:var(--white);border-radius:var(--radius);padding:36px;display:flex;flex-direction:column;gap:18px}
+  .gains h2{color:var(--white);font-size:30px;line-height:1.2}
+  .gains .eyebrow{color:var(--cyan-light)}
+  .gains ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+  .gains li{display:flex;gap:12px}
+  .gains svg{flex:none;margin-top:2px}
+
+  /* Gazi Teknopark */
+  .gt{background:var(--white);border-block:1px solid var(--line)}
+  .gt-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:56px;align-items:center;padding-block:72px}
+  .gt-grid h2{font-size:34px}
+  .gt-copy{display:flex;flex-direction:column;gap:14px}
+  .gt-copy p{color:var(--muted)}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .stats div{background:var(--white);padding:24px 20px;display:flex;flex-direction:column;gap:6px}
+  .stats b{font-family:var(--display);font-size:34px;color:var(--blue);font-variant-numeric:tabular-nums}
+  .stats span{font-size:15px;color:var(--muted)}
+
+  /* SSS */
+  .faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:56px}
+  .faq h2{font-size:36px;line-height:1.15}
+  .faq details{border-top:1px solid var(--line);padding-block:20px}
+  .faq details:last-child{border-bottom:1px solid var(--line)}
+  .faq summary{font-family:var(--display);font-weight:600;font-size:19px;color:var(--navy);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:24px;line-height:1;color:var(--blue)}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{margin-top:10px;color:var(--muted)}
+
+  /* Ön kayıt */
+  .signup{padding-block:80px 96px}
+  .signup-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);border-radius:20px;overflow:hidden}
+  .signup-info{background:var(--tint);padding:48px;display:flex;flex-direction:column;gap:18px}
+  .signup-info h2{font-size:36px;line-height:1.15}
+  .signup-info p{color:var(--muted)}
+  .signup-info .dates{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+  form.signup-form{padding:48px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}
+  .field{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:15px}
+  .full{grid-column:1/-1}
+  .field input,.field select,.field textarea{font:inherit;font-size:16px;font-weight:400;padding:12px 14px;border:1px solid var(--field);border-radius:8px;background:var(--white);color:var(--ink)}
+  .field textarea{resize:vertical}
+  fieldset{border:0;margin:0;padding:0}
+  legend{font-weight:600;font-size:15px;padding:0;margin-bottom:10px}
+  .checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .checks label{display:flex;gap:10px;align-items:center}
+  .checks input{width:18px;height:18px}
+  .submit-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .submit-row small{font-size:14px;color:var(--muted2)}
+  .form-msg{grid-column:1/-1;background:#e3f3ea;color:#14532d;border-radius:8px;padding:12px 14px;font-weight:600}
+
+  /* Altbilgi */
+  .site-footer{background:var(--navy);color:#c9d8ee}
+  .foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px;padding-block:56px 40px}
+  .foot-grid div{display:flex;flex-direction:column;gap:8px;font-size:15px}
+  .foot-brand{font-family:var(--display);font-weight:700;font-size:26px;color:var(--white)}
+  .foot-label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan-light)}
+  .site-footer a{color:var(--white)}
+  .foot-note{border-top:1px solid #2a4675;padding-block:20px 32px;font-size:13px}
+
+  /* Tablet */
+  @media (max-width:1080px){
+    .modules{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .hero h1{font-size:46px}
+    .nav-links{gap:18px;font-size:15px}
+  }
+  /* Telefon ve küçük tablet */
+  @media (max-width:860px){
+    .wrap{padding-inline:20px}
+    .menu-btn{display:grid;place-items:center}
+    .nav{gap:16px;flex-wrap:wrap}
+    .nav .logo img{height:44px}
+    .nav-links,.nav-cta{display:none}
+    .nav.open .nav-links{display:flex;flex-direction:column;gap:14px;width:100%;padding-block:12px 8px;font-size:17px}
+    .nav.open .nav-cta{display:inline-block;width:100%;text-align:center}
+    .hero-grid,.who,.gt-grid,.faq,.signup-card{grid-template-columns:minmax(0,1fr)}
+    .hero-grid{padding-block:40px 48px;gap:32px}
+    .hero h1{font-size:36px}
+    .hero .lead{font-size:18px}
+    .hero-visual{padding:24px}
+    .facts .wrap,.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .facts b{font-size:30px}
+    .flow,.modules{grid-template-columns:minmax(0,1fr)}
+    .modules-head{flex-direction:column;align-items:flex-start;gap:16px}
+    .section{padding-block:64px 24px}
+    .section-head h2{font-size:30px}
+    .case-row{grid-template-columns:minmax(0,1fr);gap:4px;padding:18px 20px}
+    .case-row.head{display:none}
+    .who{padding-bottom:64px}
+    .who-card,.gains{padding:26px}
+    .gt-grid{gap:28px;padding-block:56px}
+    .faq{gap:20px}
+    .signup-info,form.signup-form{padding:28px}
+    form.signup-form,.checks{grid-template-columns:minmax(0,1fr)}
+    .foot-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav" id="nav">
+    <a class="logo" href="#top" aria-label="G-Tech+ ana sayfa"><img src="gtech-logo.png" alt="Gazi G-Tech+" width="900" height="474"></a>
+    <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Menüyü aç">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <nav class="nav-links" id="nav-links" aria-label="Ana menü">
+      <a href="#program">Program</a>
+      <a href="#moduller">Akademi</a>
+      <a href="#senaryolar">Kullanım senaryoları</a>
+      <a href="#kimler">Kimler katılabilir</a>
+      <a href="#sss">SSS</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#on-kayit">Ön kayıt</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Gazi Teknopark · Yaratıcı Teknolojiler Programı</div>
+        <h1>Yaratıcı teknolojileri ürününüze taşıyın.</h1>
+        <p class="lead">Gazi Teknopark firmaları için 6 aylık uygulamalı eğitim ve danışmanlık programı. Üretken yapay zekâ, AR/VR/XR, oyun teknolojileri, gerçek zamanlı 3D ve yeni medyayı hangi iş probleminizde, hangi teknolojiyle kullanacağınızı birlikte belirliyoruz.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#on-kayit">Ön kayıt formunu doldurun</a>
+          <a class="btn btn-outline" href="#program">Programı inceleyin</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="gtech-logo.png" alt="G-Tech+ logosu" width="900" height="474">
+        <div class="steps4">
+          <div><strong>Ölç</strong>Yaratıcı teknoloji olgunluğunuz</div>
+          <div><strong>Öğren</strong>30 saat uygulamalı atölye</div>
+          <div><strong>Tasarla</strong>Ürününüze özel senaryo</div>
+          <div><strong>Planla</strong>Dönüşüm yol haritası</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts" aria-label="Program özeti">
+    <div class="wrap">
+      <div><b>6 ay</b><span>program süresi</span></div>
+      <div><b>30 saat</b><span>yüz yüze uygulamalı eğitim</span></div>
+      <div><b>≈20 firma</b><span>olgunluk ve ihtiyaç analizi</span></div>
+      <div><b>10 firma</b><span>birebir danışmanlık ve yol haritası</span></div>
+    </div>
+  </section>
+
+  <section class="section wrap" id="program">
+    <div class="section-head">
+      <div class="eyebrow">Program akışı</div>
+      <h2>Farkındalıktan uygulanabilir bir plana, altı adımda</h2>
+      <p class="lead">Her adım bir öncekinin çıktısını kullanır. Program sonunda elinizde genel bilgi değil, kendi ürününüz için hazırlanmış bir dönüşüm planı olur.</p>
+    </div>
+    <ol class="flow">
+      <li class="card"><div class="top"><span class="num">01</span><span class="when">1.–2. ay</span></div><h3>Olgunluk ve ihtiyaç analizi</h3><p>Firmanızın üretken YZ, 3D, AR/VR/XR, oyunlaştırma ve yeni medya kullanım düzeyi 5 seviyeli bir modelle ölçülür; size özel bir değerlendirme raporu hazırlanır.</p></li>
+      <li class="card"><div class="top"><span class="num">02</span><span class="when">2.–3. ay</span></div><h3>G-Tech+ Akademi</h3><p>Beş modül, 30 saat. Anlatımdan çok uygulama: her modülde kendi ürününüz üzerinde çalışırsınız.</p></li>
+      <li class="card"><div class="top"><span class="num">03</span><span class="when">3.–4. ay</span></div><h3>Kullanım Senaryosu Laboratuvarı</h3><p>İki günlük atölyede Problem → Kullanıcı → Senaryo → Teknoloji → Fayda zinciriyle ürününüz için somut senaryolar geliştirilir.</p></li>
+      <li class="card"><div class="top"><span class="num">04</span><span class="when">4.–5. ay</span></div><h3>Dönüşüm Sprinti</h3><p>Seçilen 10 firmayla birebir çalışma: teknoloji seçimi, teknik mimari, insan kaynağı, araçlar, aşamalar ve başarı göstergeleri.</p></li>
+      <li class="card"><div class="top"><span class="num">05</span><span class="when">5.–6. ay</span></div><h3>G-Tech+ Uygulama Rehberi</h3><p>Metodoloji Gazi Teknopark’a aktarılır; yeni firmalar program bittikten sonra da aynı yöntemle değerlendirilebilir.</p></li>
+      <li class="card"><div class="top"><span class="num">06</span><span class="when">6. ay</span></div><h3>Demo Günü</h3><p>Senaryolar ve yol haritaları Gazi Üniversitesi, yatırımcılar ve Ankara ekosistemine sunulur; uzmanlardan geri bildirim alınır.</p></li>
+    </ol>
+  </section>
+
+  <section class="section wrap" id="moduller">
+    <div class="modules-head">
+      <div class="section-head">
+        <div class="eyebrow">G-Tech+ Akademi</div>
+        <h2>Beş modül, kendi ürününüz üzerinde</h2>
+      </div>
+      <p>Her modül 6 saat: kavramsal çerçeve, uygulama ve firmanızın ürünüyle çalışma. Yüz yüze, Gazi Teknopark’ta.</p>
+    </div>
+    <div class="modules">
+      <article class="card module">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1558b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c.8 4.4 2.6 6.2 7 7-4.4.8-6.2 2.6-7 7-.8-4.4-2.6-6.2-7-7 4.4-.8 6.2-2.6 7-7z"/><path d="M19 16l.6 2.4L22 19l-2.4.6L19 22l-.6-2.4L16 19l2.4-.6z"/></svg>
+        <div class="tag">MODÜL 1 · 6 SAAT</div><h3>Üretken ve Yaratıcı YZ</h3>
+        <p>Görsel, video ve ses üretimi; YZ ile ürün konsepti; iş akışı otomasyonu; telif ve etik kullanım.</p>
+      </article>
+      <article class="card module">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1558b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-4l-1.5-2.5h-3L9 17H5a2 2 0 0 1-2-2z"/><circle cx="8" cy="11.5" r="1.6"/><circle cx="16" cy="11.5" r="1.6"/></svg>
+        <div class="tag">MODÜL 2 · 6 SAAT</div><h3>AR / VR / XR</h3>
+        <p>WebAR ve mobil AR, sanal showroom, eğitim ve simülasyon uygulamaları, platform seçimi.</p>
+      </article>
+      <article class="card module">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1558b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="15.5" cy="11.5" r=".9"/><circle cx="17.5" cy="13.8" r=".9"/></svg>
+        <div class="tag">MODÜL 3 · 6 SAAT</div><h3>Oyun Teknolojileri ve Gerçek Zamanlı 3D</h3>
+        <p>Unity ve Unreal Engine, oyunlaştırma, etkileşimli ürün demonstrasyonu, oyun dışı kullanım.</p>
+      </article>
+      <article class="card module">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1558b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l8.5 4.8v9.4L12 21.5l-8.5-4.8V7.3z"/><path d="M3.5 7.3L12 12l8.5-4.7M12 12v9.5"/></svg>
+        <div class="tag">MODÜL 4 · 6 SAAT</div><h3>3D ve Dijital Üretim</h3>
+        <p>3D modelleme, dijital prototipleme, üretken tasarım, fotogrametri ve dijital ikiz.</p>
+      </article>
+      <article class="card module">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1558b8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/><path d="M10 8.2v4.6l4-2.3z"/></svg>
+        <div class="tag">MODÜL 5 · 6 SAAT</div><h3>Yeni Medya ve Etkileşimli Deneyimler</h3>
+        <p>Sürükleyici deneyim tasarımı, projeksiyon haritalama, fuar ve lansman için dijital kurgular.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" id="senaryolar">
+    <div class="section-head">
+      <div class="eyebrow">Örnek kullanım senaryoları</div>
+      <h2>Oyun ya da medya firması olmanız gerekmiyor</h2>
+      <p class="lead">Yaratıcı teknolojiler eğitim, sağlık, savunma, mimarlık ve üretimde ürünü anlatmanın, öğretmenin ve satmanın yeni yolları.</p>
+    </div>
+    <div class="card cases" role="table" aria-label="Örnek kullanım senaryoları">
+      <div class="case-row head" role="row"><span role="columnheader">Sektör</span><span role="columnheader">Bugün</span><span role="columnheader">G-Tech+ fırsatı</span></div>
+      <div class="case-row" role="row"><strong role="cell">Eğitim teknolojisi</strong><span class="now" role="cell">Öğrenme yönetim sistemi</span><span role="cell">Oyunlaştırılmış ve YZ destekli öğrenme deneyimi</span></div>
+      <div class="case-row" role="row"><strong role="cell">Savunma</strong><span class="now" role="cell">Teknik sistem</span><span role="cell">Unreal Engine tabanlı etkileşimli ürün demonstrasyonu</span></div>
+      <div class="case-row" role="row"><strong role="cell">Medikal</strong><span class="now" role="cell">Tıbbi cihaz</span><span role="cell">VR kullanıcı eğitimi ve kullanım simülasyonu</span></div>
+      <div class="case-row" role="row"><strong role="cell">Mimarlık</strong><span class="now" role="cell">Mimari proje</span><span role="cell">Müşteriye VR proje deneyimi</span></div>
+      <div class="case-row" role="row"><strong role="cell">Üretim</strong><span class="now" role="cell">Fiziksel ürün</span><span role="cell">WebAR ile ürünü müşterinin kendi ortamında deneyimleme</span></div>
+    </div>
+  </section>
+
+  <section class="section wrap who" id="kimler">
+    <div class="card who-card">
+      <div class="eyebrow">Kimler katılabilir</div>
+      <h2>Gazi Teknopark firmaları</h2>
+      <p class="lead" style="font-size:17px">Ürün veya hizmetinde yaratıcı teknolojilerle geliştirilebilecek somut bir alan olan firmalar. Öncelikli alanlar:</p>
+      <div class="chips">
+        <span>Yazılım ve BİT</span><span>Oyun</span><span>Eğitim teknolojileri</span><span>Dijital medya</span><span>Tasarım ve mimarlık</span><span>Sağlık ve medikal</span><span>Savunma</span><span>Simülasyon ve 3D</span>
+      </div>
+      <ul>
+        <li>Programa en az 2 çalışanla ve üst yönetim desteğiyle katılım</li>
+        <li>Sektörel çeşitlilik gözetilir</li>
+        <li>Kuluçka firmaları ile kadın ve genç girişimcilerin yönettiği firmalara öncelik</li>
+      </ul>
+    </div>
+    <div class="gains">
+      <div class="eyebrow">Program sonunda elinizde</div>
+      <h2>Uygulamaya hazır bir plan</h2>
+      <ul>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7fd6f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Firmanıza özel yaratıcı teknoloji olgunluk raporu</span></li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7fd6f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>30 saatlik uygulamalı eğitim ve katılım belgesi</span></li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7fd6f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ürününüz için kullanım senaryosu kartları</span></li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7fd6f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Seçilen firmalar için teknoloji, ekip, araç ve kaynak ihtiyacını içeren dönüşüm yol haritası</span></li>
+        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7fd6f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Demo Günü’nde yatırımcı, üniversite ve sektör paydaşlarına sunum fırsatı</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="gt" aria-label="Gazi Teknopark">
+    <div class="wrap gt-grid">
+      <div class="gt-copy">
+        <div class="eyebrow">Programın evi</div>
+        <h2>Gazi Teknopark</h2>
+        <p>2007’den bu yana Gazi Üniversitesi ile birlikte teknoloji firmalarının Ar-Ge, girişimcilik ve uluslararasılaşma yolculuğunu destekliyor. Londra, Amsterdam ve Dubai’de irtibat ofisleri bulunuyor.</p>
+      </div>
+      <div class="stats">
+        <div><b>184</b><span>firma</span></div>
+        <div><b>46</b><span>kuluçka firması</span></div>
+        <div><b>1.277</b><span>çalışan</span></div>
+        <div><b>1.581</b><span>tamamlanan proje</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap faq" id="sss">
+    <div class="section-head" style="margin-bottom:0">
+      <div class="eyebrow">Sık sorulan sorular</div>
+      <h2>Merak ettikleriniz</h2>
+    </div>
+    <div>
+      <details open><summary>Programa katılım ücretli mi?</summary><p>[Ücret bilgisi destek kararından sonra kesinleşecek]</p></details>
+      <details><summary>Eğitimler çevrim içi mi?</summary><p>Hayır. Eğitim, atölye ve birebir danışmanlıklar yüz yüze yapılır; takip görüşmeleri ve ödev desteği çevrim içi sürer.</p></details>
+      <details><summary>Danışmanlar ürünümüzü geliştirecek mi?</summary><p>Danışmanlık yazılım geliştirmeyi kapsamaz. Uzmanlar sizinle uygulanabilir konsepti, prototip yaklaşımını ve yol haritasını birlikte çıkarır.</p></details>
+      <details><summary>Birebir danışmanlık alacak firmalar nasıl seçiliyor?</summary><p>Olgunluk analizi ve senaryo atölyesi sonuçlarına göre: senaryonun uygulanabilirliği, ticari potansiyeli, firmanın ayırabileceği kaynak ve eğitimlere katılım.</p></details>
+      <details><summary>Firma bilgilerimiz gizli kalacak mı?</summary><p>Evet. Firma raporları yalnızca ilgili firma ve program ekibiyle paylaşılır; rehberde ve Demo Günü’nde vakalar anonim kullanılır.</p></details>
+    </div>
+  </section>
+
+  <section class="wrap signup" id="on-kayit">
+    <div class="card signup-card">
+      <div class="signup-info">
+        <div class="eyebrow">Ön kayıt</div>
+        <h2>İlginizi bildirin, programa ilk sizi haber verelim</h2>
+        <p>Ön kayıt bir başvuru değildir. Program takvimi kesinleştiğinde başvuru çağrısı ön kayıt yapan firmalara öncelikli iletilecektir.</p>
+        <div class="dates">
+          <span><strong>Ön kayıt son tarihi:</strong> [TARİH]</span>
+          <span><strong>Program başlangıcı:</strong> [TARİH]</span>
+          <span><strong>İletişim:</strong> [E-POSTA ADRESİ]</span>
+        </div>
+      </div>
+      <!-- FORM: Gerçek kayıt toplamak için action adresini form servisinize/sunucunuza yönlendirin
+           (ör. kurumsal form servisi, Google Forms yerine kendi uç noktanız) ve aşağıdaki script'teki preventDefault satırını kaldırın. -->
+      <form class="signup-form" id="signup-form" action="[FORM_GÖNDERİM_ADRESİ]" method="post">
+        <label class="field full" for="firma">Firma adı<input id="firma" name="firma" type="text" required placeholder="Gazi Teknopark’taki firma adınız"></label>
+        <label class="field" for="yetkili">Ad soyad<input id="yetkili" name="ad_soyad" type="text" required autocomplete="name"></label>
+        <label class="field" for="eposta">E-posta<input id="eposta" name="eposta" type="email" required autocomplete="email"></label>
+        <label class="field" for="sektor">Sektör
+          <select id="sektor" name="sektor" required>
+            <option value="">Seçin</option><option>Yazılım ve BİT</option><option>Oyun</option><option>Eğitim teknolojileri</option><option>Dijital medya</option><option>Tasarım ve mimarlık</option><option>Sağlık ve medikal</option><option>Savunma</option><option>Diğer</option>
+          </select>
+        </label>
+        <label class="field" for="kisi">Katılacak çalışan sayısı<input id="kisi" name="calisan_sayisi" type="number" min="1" placeholder="En az 2"></label>
+        <fieldset class="full">
+          <legend>İlgilendiğiniz teknolojiler</legend>
+          <div class="checks">
+            <label for="t1"><input id="t1" name="teknoloji" value="uretken-yz" type="checkbox">Üretken yapay zekâ</label>
+            <label for="t2"><input id="t2" name="teknoloji" value="ar-vr-xr" type="checkbox">AR / VR / XR</label>
+            <label for="t3"><input id="t3" name="teknoloji" value="oyun-3d" type="checkbox">Oyun teknolojileri ve 3D</label>
+            <label for="t4"><input id="t4" name="teknoloji" value="yeni-medya" type="checkbox">Yeni medya ve etkileşim</label>
+          </div>
+        </fieldset>
+        <label class="field full" for="not">Ürününüzde geliştirmek istediğiniz alan<textarea id="not" name="not" rows="3" placeholder="Örneğin: cihazımızın kullanım eğitimini VR ile vermek"></textarea></label>
+        <div class="submit-row full">
+          <button class="btn btn-primary" type="submit">Ön kaydı gönder</button>
+          <small>Bilgileriniz yalnızca program iletişimi için kullanılır. <a href="[KVKK_METNİ_ADRESİ]">KVKK aydınlatma metni</a></small>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div><span class="foot-brand">G-Tech+</span><p>Gazi Teknopark Yaratıcı Teknolojiler Dijital Dönüşüm ve Kapasite Geliştirme Programı</p></div>
+    <div><span class="foot-label">İletişim</span><span>Gazi Teknopark, [AÇIK ADRES], Ankara</span><span>[E-POSTA ADRESİ]</span><span>[TELEFON]</span></div>
+    <div><span class="foot-label">Program</span><a href="#program">Program akışı</a><a href="#moduller">Akademi modülleri</a><a href="#on-kayit">Ön kayıt</a></div>
+  </div>
+  <div class="wrap foot-note">[Destek sağlanması halinde: Ankara Kalkınma Ajansı ve T.C. Sanayi ve Teknoloji Bakanlığı logoları ile Ajansın Tanıtım ve Görünürlük Rehberi’nde yer alan zorunlu ifade bu alana eklenecektir.]</div>
+</footer>
+
+<script>
+  // Mobil menü
+  const nav = document.getElementById('nav');
+  const btn = document.getElementById('menu-btn');
+  btn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+  });
+  document.querySelectorAll('#nav-links a, .nav-cta').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Ön kayıt formu: form servisi bağlanana kadar gönderimi durdurur ve bilgi mesajı gösterir.
+  document.getElementById('signup-form').addEventListener('submit', (e) => {
+    e.preventDefault(); // Form servisi bağlandığında bu satırı kaldırın.
+    const form = e.currentTarget;
+    let msg = form.querySelector('.form-msg');
+    if (!msg) { msg = document.createElement('p'); msg.className = 'form-msg'; msg.setAttribute('role', 'status'); form.appendChild(msg); }
+    msg.textContent = 'Önizleme: form henüz bir gönderim servisine bağlı değil, bilgiler kaydedilmedi.'; // Bağlandığında teşekkür mesajıyla değiştirin.
+  });
+</script>
+</body>
+</html>
